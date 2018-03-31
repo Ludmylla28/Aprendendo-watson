@@ -20,7 +20,8 @@ var ConversationPanel = (function() {
   // Publicly accessible methods defined
   return {
     init: init,
-    inputKeyDown: inputKeyDown
+    inputKeyDown: inputKeyDown,
+    accounType: accounType
   };
 
   // Initialize the module
@@ -222,6 +223,24 @@ var ConversationPanel = (function() {
 
       // Clear input box for further messages
       inputBox.value = '';
+      Common.fireEvent(inputBox, 'input');
+    }
+  }
+
+  function accounType (inputBox) {
+    // Submit on enter key, dis-allowing blank messages
+    if (inputBox.value) {
+      // Retrieve the context from the previous server response
+      var context;
+      var latestResponse = Api.getResponsePayload();
+      if (latestResponse) {
+        context = latestResponse.context;
+      }
+
+      // Send the user message
+      Api.sendRequest(inputBox.value, context);
+
+      // Clear input box for further messages
       Common.fireEvent(inputBox, 'input');
     }
   }

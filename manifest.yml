@@ -1,15 +1,16 @@
 ---
 declared-services:
-  my-watson-assistant-service:
+ assistente-ludy-conversati-1521923760994:
     label: conversation
     plan: free
 applications:
-- name: watson-assistant-ludy
+- name: poup-ludy
   command: npm start
   path: .
   memory: 64M
   instances: 1
   services:
-  - my-watson-assistant-service
+  - assistente-ludy-conversati-1521923760994
+
   env:
     NPM_CONFIG_PRODUCTION: false
