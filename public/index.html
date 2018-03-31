@@ -20,9 +20,10 @@
       <div class="chat-column">
         <div id="scrollingChat"></div>
         <label for="textInput" class="inputOutline">
-          <input id="textInput" class="input responsive-column"
+          <input id="textInput" class="input responsive-column" size="50px"
             placeholder="Type something" type="text"
             onkeydown="ConversationPanel.inputKeyDown(event, this)">
+          <input type="submit"  class="btn-primary"  onclick="ConversationPanel.accounType(textInput)" value="enter" />
         </label>
       </div>
     </div>
